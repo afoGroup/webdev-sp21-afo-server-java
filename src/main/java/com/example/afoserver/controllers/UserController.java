@@ -1,57 +1,69 @@
 package com.example.afoserver.controllers;
 
 import com.example.afoserver.models.User;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.afoserver.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
+//@CrossOrigin(origins = "http://anifansonly.herokuapp.com", allowCredentials = "true")
 public class UserController {
-    List<User> users = new ArrayList<User>();
-    @GetMapping("/api/register/{u}/{p}/{t}")
+
+//    This will mostlikely be changed to AUTOWIRE to auto instantiate service and provide reference to service variable
+//    This service will send to a database rather than internal that it is atm
+    @Autowired
+    UserService userService;
+//    List<User> users = new ArrayList<User>();
+
+    @PostMapping("/api/register/{uid}/{p}/{t}")
     public User register(
-            @PathVariable("u") String username,
+            @PathVariable("uid") String username,
             @PathVariable("p") String password,
             @PathVariable("t") String type,
             HttpSession session) {
-        User user = new User();
-        user.setUsername(username);
-        user.setPassword(password);
-        user.setUsertype(type);
+        User user = new User(username, password, type);
         session.setAttribute("currentUser", user);
-        users.add(user);
-        return user;
+        return userService.createUser(user);
     }
 
-    @GetMapping("/api/profile")
-    public User profile(HttpSession session) {
-        User currentUser = (User)
-                session.getAttribute("currentUser");
-        return currentUser;
-    }
-
-    @GetMapping("/api/logout")
-    public void logout
-            (HttpSession session) {
-        session.invalidate();
-    }
-
-    @GetMapping("/api/login/{u}/{p}")
-    public User login(
-            @PathVariable("u") String username,
-            @PathVariable("p") String password,
-            HttpSession session) {
-        for (User user : users) {
-            if( user.getUsername().equals(username)
-                    && user.getPassword().equals(password)) {
-                session.setAttribute("currentUser", user);
-                return user;
-            }
-        }
-        return null;
-    }
+//    Get User by ID? but also not?
+//    @GetMapping("/api/profile")
+//    public User profile(HttpSession session) {
+//        User currentUser = (User)
+//                session.getAttribute("currentUser");
+//        return currentUser;
+//    }
+//
+//    @GetMapping("/api/profile/{uid}")
+//    public User profile(HttpSession session) {
+//        User currentUser = (User)
+//                session.getAttribute("currentUser");
+//        return currentUser;
+//    }
+//
+//    @GetMapping("/api/logout")
+//    public void logout
+//            (HttpSession session) {
+//        session.invalidate();
+//    }
+//
+//    @GetMapping("/api/login/{uid}/{p}")
+//    public User login(
+//            @PathVariable("uid") String username,
+//            @PathVariable("p") String password,
+//            HttpSession session) {
+//        for (User user : users) {
+//            if( user.getUsername().equals(username)
+//                    && user.getPassword().equals(password)) {
+//                session.setAttribute("currentUser", user);
+//                return user;
+//            }
+//        }
+//        return null;
+//    }
 }
