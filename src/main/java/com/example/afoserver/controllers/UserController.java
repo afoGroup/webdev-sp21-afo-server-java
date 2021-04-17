@@ -31,6 +31,18 @@ public class UserController {
         return userService.createUser(user);
     }
 
+    @GetMapping("/api/users")
+    public List<User> findAllUser() {
+        return userService.findAllUsers();
+    }
+
+    @GetMapping("/api/profile/{uid}")
+    public User findUserById(
+            @PathVariable("uid") Long uid) {
+        return userService.findUserById(uid);
+    }
+
+
 //    Get User by ID? but also not?
 //    @GetMapping("/api/profile")
 //    public User profile(HttpSession session) {
