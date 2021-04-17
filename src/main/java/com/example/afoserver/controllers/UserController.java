@@ -10,9 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-//@CrossOrigin(origins = "*", allowCredentials = "true")
-//@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
-@CrossOrigin(origins = "http://anifansonly.herokuapp.com", allowCredentials = "true")
+@CrossOrigin(origins = {"http://localhost:3000", "http://anifansonly.herokuapp.com"}, allowCredentials = "true")
 public class UserController {
 
 //    This will mostlikely be changed to AUTOWIRE to auto instantiate service and provide reference to service variable
