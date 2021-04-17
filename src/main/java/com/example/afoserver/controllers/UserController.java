@@ -17,15 +17,11 @@ public class UserController {
 //    This service will send to a database rather than internal that it is atm
     @Autowired
     UserService userService;
-//    List<User> users = new ArrayList<User>();
 
-    @PostMapping("/api/register/{uid}/{p}/{t}")
+    @PostMapping("/api/register")
     public User register(
-            @PathVariable("uid") String username,
-            @PathVariable("p") String password,
-            @PathVariable("t") String type,
+            @RequestBody User user,
             HttpSession session) {
-        User user = new User(username, password, type);
         session.setAttribute("currentUser", user);
         return userService.createUser(user);
     }
@@ -40,7 +36,6 @@ public class UserController {
             @PathVariable("uid") Long uid) {
         return userService.findUserById(uid);
     }
-
 
 //    Get User by ID? but also not?
 //    @GetMapping("/api/profile")

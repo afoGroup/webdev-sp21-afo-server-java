@@ -16,6 +16,12 @@ public class User {
     private String username; // username set by user
     private String password; // password set by user
     private String usertype; // otaku or weeb
+    private String email;
+    private String twitter;
+    private String instagram;
+    private String pictureURL;
+    @Column(columnDefinition = "TEXT")
+    private String bio;
 
     /**
      * Default constructor for user.
@@ -25,7 +31,7 @@ public class User {
     /**
      * Constructor for user that takes in username, password, and usertype.
      */
-    public User( String username, String password, String usertype) {
+    public User(String username, String password, String usertype) {
         this.username = username;
         this.password = password;
         this.usertype = usertype;
@@ -78,4 +84,45 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTwitter() {
+        return twitter;
+    }
+
+    public void setTwitter(String twitter) {
+        this.twitter = twitter;
+    }
+
+    public String getInstagram() {
+        return instagram;
+    }
+
+    public void setInstagram(String instagram) {
+        this.instagram = instagram;
+    }
+
+    public String getPictureURL() {
+        return pictureURL;
+    }
+
+    public void setPictureURL(String pictureURL) {
+        this.pictureURL = pictureURL;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
 }
