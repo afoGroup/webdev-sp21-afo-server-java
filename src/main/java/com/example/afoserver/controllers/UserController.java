@@ -37,6 +37,13 @@ public class UserController {
         return userService.findUserById(uid);
     }
 
+    @PostMapping("/api/profile")
+    public User profile(HttpSession session) {
+        User currentUser = (User)session.getAttribute("currentUser");
+        String currentUsername = currentUser.getUsername();
+        return userService.findUserByUsername(currentUsername);
+    }
+
 //    Get User by ID? but also not?
 //    @GetMapping("/api/profile")
 //    public User profile(HttpSession session) {
