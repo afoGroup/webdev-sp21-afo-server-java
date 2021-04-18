@@ -31,7 +31,7 @@ public class UserController {
         return userService.findAllUsers();
     }
 
-    @GetMapping("/api/profile/{uid}")
+    @GetMapping("/api/user/{uid}")
     public User findUserById(
             @PathVariable("uid") Long uid) {
         return userService.findUserById(uid);
