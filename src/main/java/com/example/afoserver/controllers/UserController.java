@@ -1,6 +1,7 @@
 package com.example.afoserver.controllers;
 
 import com.example.afoserver.models.User;
+import com.example.afoserver.repositories.UserRepository;
 import com.example.afoserver.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -46,6 +47,13 @@ public class UserController {
     @PostMapping("/api/logout")
     public void logout(HttpSession session) {
         session.invalidate();
+    }
+
+    @PostMapping("/api/login")
+    public User login(HttpSession session, @RequestBody User user) {
+        User currentUser = userService.findUserByCredentials(user.getUsername(), user.getPassword());
+        session.setAttribute("currentUser", currentUser);
+        return currentUser;
     }
 
 //    Get User by ID? but also not?
