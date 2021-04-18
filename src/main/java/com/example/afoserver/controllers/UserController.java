@@ -40,11 +40,12 @@ public class UserController {
     @PostMapping("/api/profile")
     public User profile(HttpSession session) {
         User currentUser = (User)session.getAttribute("currentUser");
-        String currentUsername = currentUser.getUsername();
-        User user = userService.findUserByUsername(currentUsername);
-        session.setAttribute("currentUser", user);
-//        Now the session will have the userID too
-        return user;
+        return currentUser;
+    }
+
+    @PostMapping("/api/logout")
+    public void logout(HttpSession session) {
+        session.invalidate();
     }
 
 //    Get User by ID? but also not?
