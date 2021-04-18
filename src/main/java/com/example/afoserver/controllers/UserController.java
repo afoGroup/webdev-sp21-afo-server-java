@@ -50,9 +50,9 @@ public class UserController {
     }
 
     @PostMapping("/api/login")
-    public User login(@RequestBody User user) {
+    public User login(HttpSession session, @RequestBody User user) {
         User currentUser = userService.findUserByCredentials(user.getUsername(), user.getPassword());
-//        session.setAttribute("currentUser", currentUser);
+        session.setAttribute("currentUser", currentUser);
         return currentUser;
     }
 
