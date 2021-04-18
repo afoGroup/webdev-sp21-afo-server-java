@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface UserRepository extends CrudRepository<User, Long> {
 
-    @Query(value = "SELECT * FROM widgets WHERE username=:username", nativeQuery = true )
+    @Query(value = "SELECT * FROM users WHERE username=:username", nativeQuery = true )
     public User findUserByUsername(@Param("username") String username);
 }
