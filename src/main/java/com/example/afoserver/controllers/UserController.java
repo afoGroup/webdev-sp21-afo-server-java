@@ -41,7 +41,10 @@ public class UserController {
     public User profile(HttpSession session) {
         User currentUser = (User)session.getAttribute("currentUser");
         String currentUsername = currentUser.getUsername();
-        return userService.findUserByUsername(currentUsername);
+        User user = userService.findUserByUsername(currentUsername);
+        session.setAttribute("currentUser", user);
+//        Now the session will have the userID too
+        return user;
     }
 
 //    Get User by ID? but also not?
