@@ -25,7 +25,7 @@ public class Group {
     private String bio;
     private Long associatedAnimeId;
     @OneToMany (
-            mappedBy = "groups",
+            mappedBy = "group",
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
