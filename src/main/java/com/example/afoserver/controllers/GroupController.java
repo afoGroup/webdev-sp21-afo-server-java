@@ -25,7 +25,7 @@ public class GroupController {
         if (usertype.equals("weeb")) {
             return null;
         }
-        group.createNewGroup(currentUser);
+//        group.createNewGroup(currentUser);
         return groupService.createGroup(group);
     }
 
