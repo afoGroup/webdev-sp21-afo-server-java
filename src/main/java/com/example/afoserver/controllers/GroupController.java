@@ -30,9 +30,9 @@ public class GroupController {
         return groupService.createGroup(group);
     }
 
-    @GetMapping("/api/groups")
-    public List<Group> findAllGroups() {
-        return groupService.findAllGroups();
-    }
+//    @GetMapping("/api/groups")
+//    public List<Group> findAllGroups() {
+//        return groupService.findAllGroups();
+//    }
 
 }
