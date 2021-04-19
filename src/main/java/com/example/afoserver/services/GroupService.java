@@ -1,7 +1,6 @@
 package com.example.afoserver.services;
 
 import com.example.afoserver.models.Group;
-import com.example.afoserver.models.UserGroup;
 import com.example.afoserver.repositories.GroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
