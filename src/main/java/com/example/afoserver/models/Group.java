@@ -12,8 +12,6 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "groups")
-//@NaturalIdCache
-//@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Group {
 
     @Id
