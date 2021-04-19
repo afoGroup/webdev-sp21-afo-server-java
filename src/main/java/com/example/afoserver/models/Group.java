@@ -17,11 +17,10 @@ public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-//    @NaturalId
     private String name;
     @Column(columnDefinition = "TEXT")
     private String bio;
-    private Long associatedAnimeId;
+    private String associatedAnimeId;
     @OneToMany (
             mappedBy = "group",
             cascade = CascadeType.ALL,
