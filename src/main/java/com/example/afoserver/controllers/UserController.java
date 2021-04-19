@@ -7,15 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:3000", "http://anifansonly.herokuapp.com"}, allowCredentials = "true")
 public class UserController {
 
-//    This will mostlikely be changed to AUTOWIRE to auto instantiate service and provide reference to service variable
-//    This service will send to a database rather than internal that it is atm
     @Autowired
     UserService userService;
 
@@ -69,12 +66,6 @@ public class UserController {
 //        User currentUser = (User)
 //                session.getAttribute("currentUser");
 //        return currentUser;
-//    }
-//
-//    @GetMapping("/api/logout")
-//    public void logout
-//            (HttpSession session) {
-//        session.invalidate();
 //    }
 //
 //    @GetMapping("/api/login/{uid}/{p}")

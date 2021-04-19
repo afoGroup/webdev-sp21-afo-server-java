@@ -1,6 +1,10 @@
 package com.example.afoserver.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 /**
  * A user object contains information about the AFO user's
@@ -23,6 +27,12 @@ public class User {
     private String pictureURL;
     @Column(columnDefinition = "TEXT")
     private String bio;
+    @OneToMany (
+            mappedBy = "users",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<UserGroup> groups = new ArrayList<>();
 
     /**
      * Default constructor for user.
@@ -133,5 +143,35 @@ public class User {
     public void setBio(String bio) {
         this.bio = bio;
     }
+
+    public void createGroup(Group group) {
+        UserGroup userGroup = new UserGroup(group, this);
+        userGroup.setUserIsOwner(Boolean.TRUE);
+        groups.add(userGroup);
+        group.getUsers().add(userGroup);
+    }
+
+    public void addGroup(Group group) {
+        UserGroup userGroup = new UserGroup(group, this);
+        groups.add(userGroup);
+        group.getUsers().add(userGroup);
+    }
+
+    public void removeGroup(Group group) {
+        for (Iterator<UserGroup> iterator = groups.iterator();
+             iterator.hasNext();) {
+            UserGroup userGroup = iterator.next();
+
+            if (userGroup.getGroup().equals(group) &&
+                    userGroup.getUser().equals(this)) {
+                iterator.remove();
+                userGroup.getGroup().getUsers().remove(userGroup);
+                userGroup.setGroup(null);
+                userGroup.setUser(null);
+            }
+        }
+    }
+
+
 
 }
