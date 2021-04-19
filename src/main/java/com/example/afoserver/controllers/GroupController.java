@@ -4,12 +4,10 @@ import com.example.afoserver.models.Group;
 import com.example.afoserver.models.User;
 import com.example.afoserver.services.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:3000", "http://anifansonly.herokuapp.com"}, allowCredentials = "true")
@@ -32,5 +30,9 @@ public class GroupController {
         return groupService.createGroup(group);
     }
 
+    @GetMapping("/api/groups")
+    public List<Group> findAllGroups() {
+        return groupService.findAllGroups();
+    }
 
 }
