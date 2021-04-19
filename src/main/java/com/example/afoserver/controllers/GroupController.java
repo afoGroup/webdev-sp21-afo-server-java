@@ -19,7 +19,7 @@ public class GroupController {
     public Group createGroup(
             @RequestBody Group group,
             HttpSession session) {
-        User currentUser = new User(3l, "noExtraOnlyBareMin", "password4", "otaku")
+        User currentUser = new User(3l, "noExtraOnlyBareMin", "password4", "otaku");
 //        User currentUser = (User) session.getAttribute("currentUser");
         Long userId = currentUser.getId();
         String usertype = currentUser.getUsertype();
@@ -30,9 +30,9 @@ public class GroupController {
         return groupService.createGroup(group);
     }
 
-//    @GetMapping("/api/groups")
-//    public List<Group> findAllGroups() {
-//        return groupService.findAllGroups();
-//    }
+    @GetMapping("/api/groups")
+    public List<Group> findAllGroups() {
+        return groupService.findAllGroups();
+    }
 
 }
