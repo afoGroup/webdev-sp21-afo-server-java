@@ -1,7 +1,6 @@
 package com.example.afoserver.controllers;
 
 import com.example.afoserver.models.User;
-import com.example.afoserver.repositories.UserRepository;
 import com.example.afoserver.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -5,8 +5,12 @@ import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.Objects;
 
-// Composite primary key for the join table
-// Read this article to understand https://vladmihalcea.com/the-best-way-to-map-a-many-to-many-association-with-extra-columns-when-using-jpa-and-hibernate/
+/**
+ * Composite primary key for the join table
+ * Read this article for better understanding:
+ * https://vladmihalcea.com/the-best-way-to-map-a-many-to-many-association-with-extra-columns-when-using-jpa-and-hibernate/
+ */
+
 @Embeddable
 public class UserGroupId implements Serializable {
     @Column(name="group_id")

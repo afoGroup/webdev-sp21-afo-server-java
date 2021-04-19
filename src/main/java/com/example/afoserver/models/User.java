@@ -141,11 +141,12 @@ public class User {
         this.bio = bio;
     }
 
-    public void createGroup(Group group) {
-        UserGroup userGroup = new UserGroup(group, this);
-        userGroup.setUserIsOwner(Boolean.TRUE);
-        groups.add(userGroup);
-        group.getUsers().add(userGroup);
+    public List<UserGroup> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(List<UserGroup> groups) {
+        this.groups = groups;
     }
 
     public void addGroup(Group group) {

@@ -3,7 +3,6 @@ package com.example.afoserver.services;
 import com.example.afoserver.models.User;
 import com.example.afoserver.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

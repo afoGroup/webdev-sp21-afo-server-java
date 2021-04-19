@@ -23,11 +23,7 @@ public class Group {
     private String name;
     @Column(columnDefinition = "TEXT")
     private String bio;
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name="owner_id")
-//    private User ownerId;
     private Long associatedAnimeId;
-
     @OneToMany (
             mappedBy = "groups",
             cascade = CascadeType.ALL,
@@ -118,6 +114,13 @@ public class Group {
 
     public void setUsers(List<UserGroup> users) {
         this.users = users;
+    }
+
+    public void createNewGroup(User user) {
+        UserGroup userGroup = new UserGroup(this, user);
+        userGroup.setUserIsOwner(Boolean.TRUE);
+        users.add(userGroup);
+        user.getGroups().add(userGroup);
     }
 
     @Override
