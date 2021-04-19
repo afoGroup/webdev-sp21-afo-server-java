@@ -12,14 +12,14 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "groups")
-@NaturalIdCache
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+//@NaturalIdCache
+//@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Group {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NaturalId
+//    @NaturalId
     private String name;
     @Column(columnDefinition = "TEXT")
     private String bio;

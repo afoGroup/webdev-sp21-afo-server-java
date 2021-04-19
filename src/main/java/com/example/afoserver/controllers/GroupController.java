@@ -16,7 +16,7 @@ public class GroupController {
     GroupService groupService;
 
     @PostMapping("/api/group/new")
-    public Group createGroup(
+    public Group newGroup(
             @RequestBody Group group,
             HttpSession session) {
 //        User currentUser = new User(3l, "noExtraOnlyBareMin", "password4", "otaku");
