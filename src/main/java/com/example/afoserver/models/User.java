@@ -39,7 +39,8 @@ public class User {
     /**
      * Constructor for user that takes in username, password, and usertype.
      */
-    public User(String username, String password, String usertype) {
+    public User(Long id, String username, String password, String usertype) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.usertype = usertype;

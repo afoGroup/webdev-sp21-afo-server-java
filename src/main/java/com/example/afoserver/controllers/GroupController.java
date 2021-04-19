@@ -21,7 +21,8 @@ public class GroupController {
     public Group createGroup(
             @RequestBody Group group,
             HttpSession session) {
-        User currentUser = (User) session.getAttribute("currentUser");
+        User currentUser = new User(3l, "noExtraOnlyBareMin", "password4", "otaku")
+//        User currentUser = (User) session.getAttribute("currentUser");
         Long userId = currentUser.getId();
         String usertype = currentUser.getUsertype();
         if (usertype.equals("weeb")) {
