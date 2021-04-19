@@ -91,17 +91,17 @@ public class Group {
 
     /**
      * Get the associated anime id of this object.
-     * @return associatedAnimeId a Long.
+     * @return associatedAnimeId a String.
      */
-    public Long getAssociatedAnimeId() {
+    public String getAssociatedAnimeId() {
         return associatedAnimeId;
     }
 
     /**
      * Set the associatedAnimeId of this object
-     * @param associatedAnimeId a Long.
+     * @param associatedAnimeId a String.
      */
-    public void setAssociatedAnimeId(Long associatedAnimeId) {
+    public void setAssociatedAnimeId(String associatedAnimeId) {
         this.associatedAnimeId = associatedAnimeId;
     }
 
