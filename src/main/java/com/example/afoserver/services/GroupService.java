@@ -13,7 +13,6 @@ public class GroupService {
     GroupRepository groupRepository;
 
     public Group createGroup(Group group) {
-
         return groupRepository.save(group);
     }
 

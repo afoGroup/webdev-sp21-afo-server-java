@@ -17,14 +17,14 @@ public class GroupController {
 
     @PostMapping("/api/group/new")
     public Group createGroup(
-            @RequestBody Group group) {
-//            HttpSession session) {
-        User currentUser = new User(3l, "noExtraOnlyBareMin", "password4", "otaku");
+            @RequestBody Group group,
+            HttpSession session) {
+//        User currentUser = new User(3l, "noExtraOnlyBareMin", "password4", "otaku");
 //        User currentUser = (User) session.getAttribute("currentUser");
-        String usertype = currentUser.getUsertype();
-        if (usertype.equals("weeb")) {
-            return null;
-        }
+//        String usertype = currentUser.getUsertype();
+//        if (usertype.equals("weeb")) {
+//            return null;
+//        }
 //        group.createNewGroup(currentUser);
         return groupService.createGroup(group);
     }

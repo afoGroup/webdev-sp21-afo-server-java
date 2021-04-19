@@ -30,11 +30,11 @@ public class Group {
             orphanRemoval = true
     )
     private List<UserGroup> users = new ArrayList<>();
-//
-//    /**
-//     * Default constructor for user.
-//     */
-//    public Group() {}
+
+    /**
+     * Default constructor for user.
+     */
+    public Group() {}
 
     /**
      * Get the id of this object.
