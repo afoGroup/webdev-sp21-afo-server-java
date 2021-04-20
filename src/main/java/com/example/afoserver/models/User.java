@@ -25,7 +25,7 @@ public class User {
     @Column(columnDefinition = "TEXT")
     private String bio;
     @OneToMany (
-            mappedBy = "user",
+            mappedBy = "users",
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )

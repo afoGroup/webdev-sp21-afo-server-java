@@ -18,11 +18,14 @@ public class Group {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+
     @Column(columnDefinition = "TEXT")
+
     private String bio;
     private String animeId;
+
     @OneToMany (
-            mappedBy = "group",
+            mappedBy = "groups",
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
