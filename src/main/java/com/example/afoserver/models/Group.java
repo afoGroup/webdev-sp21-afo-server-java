@@ -90,19 +90,19 @@ public class Group {
 //    }
 
     /**
-     * Get the associated anime id of this object.
-     * @return associatedAnimeId a String.
+     * Get the anime id of this object.
+     * @return animeId a String.
      */
-    public String getAssociatedAnimeId() {
-        return associatedAnimeId;
+    public String getAnimeId() {
+        return animeId;
     }
 
     /**
-     * Set the associatedAnimeId of this object
-     * @param associatedAnimeId a String.
+     * Set the animeId of this object
+     * @param animeId a String.
      */
-    public void setAssociatedAnimeId(String associatedAnimeId) {
-        this.associatedAnimeId = associatedAnimeId;
+    public void setAnimeId(String animeId) {
+        this.animeId = animeId;
     }
 
     public List<UserGroup> getUsers() {
