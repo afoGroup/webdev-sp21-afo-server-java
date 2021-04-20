@@ -1,7 +1,7 @@
 package com.example.afoserver.controllers;
 
-import com.example.afoserver.models.Group;
-import com.example.afoserver.services.GroupService;
+import com.example.afoserver.models.Club;
+import com.example.afoserver.services.ClubService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,13 +10,13 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:3000", "http://anifansonly.herokuapp.com"}, allowCredentials = "true")
-public class GroupController {
+public class ClubController {
     @Autowired
-    GroupService groupService;
+    ClubService groupService;
 
     @PostMapping("/api/group/new")
-    public Group newGroup(
-            @RequestBody Group group,
+    public Club newClub(
+            @RequestBody Club club,
             HttpSession session) {
 //        User currentUser = new User(3l, "noExtraOnlyBareMin", "password4", "otaku");
 //        User currentUser = (User) session.getAttribute("currentUser");
@@ -25,12 +25,12 @@ public class GroupController {
 //            return null;
 //        }
 //        group.createNewGroup(currentUser);
-        return groupService.createGroup(group);
+        return groupService.createClub(club);
     }
 
     @GetMapping("/api/groups")
-    public List<Group> findAllGroups() {
-        return groupService.findAllGroups();
+    public List<Club> findAllClubs() {
+        return groupService.findAllClubs();
     }
 
 }

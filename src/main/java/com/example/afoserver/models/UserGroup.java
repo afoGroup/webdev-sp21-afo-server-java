@@ -12,8 +12,8 @@ public class UserGroup {
     private UserGroupId id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @MapsId("groupId")
-    private Group group;
+    @MapsId("clubId")
+    private Club club;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("userId")
@@ -24,10 +24,10 @@ public class UserGroup {
 
     public UserGroup() {}
 
-    public UserGroup(Group group, User user) {
-        this.group = group;
+    public UserGroup(Club club, User user) {
+        this.club = club;
         this.user = user;
-        this.id = new UserGroupId(group.getId(), user.getId());
+        this.id = new UserGroupId(club.getId(), user.getId());
     }
 
     public UserGroupId getId() {
@@ -38,12 +38,12 @@ public class UserGroup {
         this.id = id;
     }
 
-    public Group getGroup() {
-        return group;
+    public Club getGroup() {
+        return club;
     }
 
-    public void setGroup(Group group) {
-        this.group = group;
+    public void setGroup(Club club) {
+        this.club = club;
     }
 
     public User getUser() {
@@ -70,13 +70,13 @@ public class UserGroup {
             return false;
 
         UserGroup that = (UserGroup) o;
-        return Objects.equals(group, that.group) &&
+        return Objects.equals(club, that.club) &&
                 Objects.equals(user, that.user);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(group, user);
+        return Objects.hash(club, user);
     }
 
 }

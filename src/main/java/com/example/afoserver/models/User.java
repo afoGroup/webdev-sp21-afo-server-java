@@ -29,7 +29,7 @@ public class User {
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    private List<UserGroup> groups = new ArrayList<>();
+    private List<UserGroup> clubs = new ArrayList<>();
 
     /**
      * Default constructor for user.
@@ -143,25 +143,25 @@ public class User {
     }
 
     public List<UserGroup> getGroups() {
-        return groups;
+        return clubs;
     }
 
     public void setGroups(List<UserGroup> groups) {
-        this.groups = groups;
+        this.clubs = groups;
     }
 
-    public void addGroup(Group group) {
-        UserGroup userGroup = new UserGroup(group, this);
-        groups.add(userGroup);
-        group.getUsers().add(userGroup);
+    public void addGroup(Club club) {
+        UserGroup userGroup = new UserGroup(club, this);
+        clubs.add(userGroup);
+        club.getUsers().add(userGroup);
     }
 
-    public void removeGroup(Group group) {
-        for (Iterator<UserGroup> iterator = groups.iterator();
+    public void removeGroup(Club club) {
+        for (Iterator<UserGroup> iterator = clubs.iterator();
              iterator.hasNext();) {
             UserGroup userGroup = iterator.next();
 
-            if (userGroup.getGroup().equals(group) &&
+            if (userGroup.getGroup().equals(club) &&
                     userGroup.getUser().equals(this)) {
                 iterator.remove();
                 userGroup.getGroup().getUsers().remove(userGroup);

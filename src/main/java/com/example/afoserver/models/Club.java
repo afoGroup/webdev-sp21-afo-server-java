@@ -1,18 +1,13 @@
 package com.example.afoserver.models;
 
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.NaturalId;
-import org.hibernate.annotations.NaturalIdCache;
-import org.hibernate.annotations.Cache;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "groups")
-public class Group {
+@Table(name = "clubs")
+public class Club {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +20,7 @@ public class Group {
     private String animeId;
 
     @OneToMany (
-            mappedBy = "group",
+            mappedBy = "club",
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
@@ -34,7 +29,7 @@ public class Group {
     /**
      * Default constructor for user.
      */
-    public Group() {}
+    public Club() {}
 
     /**
      * Get the id of this object.
@@ -127,8 +122,8 @@ public class Group {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Group group = (Group) o;
-        return Objects.equals(name, group.name);
+        Club club = (Club) o;
+        return Objects.equals(name, club.name);
     }
 
     @Override
