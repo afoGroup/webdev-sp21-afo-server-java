@@ -15,12 +15,12 @@ import java.util.Objects;
 public class Group {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     @Column(columnDefinition = "TEXT")
     private String bio;
-    private String associatedAnimeId;
+    private String animeId;
     @OneToMany (
             mappedBy = "group",
             cascade = CascadeType.ALL,
