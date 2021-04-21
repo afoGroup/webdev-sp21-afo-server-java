@@ -28,12 +28,22 @@ public class UserController {
         return userService.findAllUsers();
     }
 
-    @GetMapping("/api/user/{uid}")
+    /**
+     * Endpoint to find user by ID used for search and routing to user profiles
+     * @param uid user id
+     * @return User that is looked up and their info
+     */
+    @GetMapping("/api/users/{uid}")
     public User findUserById(
             @PathVariable("uid") Long uid) {
         return userService.findUserById(uid);
     }
 
+    /**
+     * Endpoint to retrieve the logged in user's profile information
+     * @param session current session
+     * @return currentUser info about currentUser
+     */
     @PostMapping("/api/profile")
     public User profile(HttpSession session) {
         User currentUser = (User)session.getAttribute("currentUser");
@@ -52,33 +62,9 @@ public class UserController {
         return currentUser;
     }
 
-//    Get User by ID? but also not?
-//    @GetMapping("/api/profile")
-//    public User profile(HttpSession session) {
-//        User currentUser = (User)
-//                session.getAttribute("currentUser");
-//        return currentUser;
-//    }
-//
-//    @GetMapping("/api/profile/{uid}")
-//    public User profile(HttpSession session) {
-//        User currentUser = (User)
-//                session.getAttribute("currentUser");
-//        return currentUser;
-//    }
-//
-//    @GetMapping("/api/login/{uid}/{p}")
-//    public User login(
-//            @PathVariable("uid") String username,
-//            @PathVariable("p") String password,
-//            HttpSession session) {
-//        for (User user : users) {
-//            if( user.getUsername().equals(username)
-//                    && user.getPassword().equals(password)) {
-//                session.setAttribute("currentUser", user);
-//                return user;
-//            }
-//        }
-//        return null;
-//    }
+//    @DeleteMapping("/api/users/{uid}")
+//    public deleteUser(
+//            @PathVariable()
+//    )
+
 }

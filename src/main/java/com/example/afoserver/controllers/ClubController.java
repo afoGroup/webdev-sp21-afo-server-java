@@ -15,24 +15,26 @@ public class ClubController {
     @Autowired
     ClubService clubService;
 
-    @PostMapping("/api/create/board")
-    public Club newClub(
+//    Testing needed: Postman to test with sessions is hard
+//    Returns null if weeb, theortically never going to happen
+    @PostMapping("/api/groups/create")
+    public Club createClub(
             @RequestBody Club club,
             HttpSession session) {
-        return club;
-//        User currentUser = new User(3l, "noExtraOnlyBareMin", "password4", "otaku");
-//        User currentUser = (User) session.getAttribute("currentUser");
-//        String usertype = currentUser.getUsertype();
-//        if (usertype.equals("weeb")) {
-//            return null;
-//        }
-//        club.createNewClub(currentUser);
-//        return clubService.createClub(club);
+        User currentUser = (User) session.getAttribute("currentUser");
+        String usertype = currentUser.getUsertype();
+        if (usertype.equals("weeb")) {
+            return null;
+        }
+        club.createNewClub(currentUser);
+        return clubService.createClub(club);
     }
 
-    @GetMapping("/api/boards")
+    @GetMapping("/api/groups")
     public List<Club> findAllClubs() {
         return clubService.findAllClubs();
     }
+
+
 
 }

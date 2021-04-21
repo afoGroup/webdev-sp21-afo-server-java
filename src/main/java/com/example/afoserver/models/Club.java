@@ -15,7 +15,6 @@ public class Club {
     private String name;
 
     @Column(columnDefinition = "TEXT")
-
     private String bio;
     private String animeId;
 
