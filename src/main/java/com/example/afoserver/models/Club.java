@@ -24,7 +24,7 @@ public class Club {
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    private List<UserGroup> users = new ArrayList<>();
+    private List<UserClub> users = new ArrayList<>();
 
     /**
      * Default constructor for user.
@@ -72,22 +72,6 @@ public class Club {
     }
 
     /**
-     * Get the owner of this object.
-     * @return owner a Long. FK to users.
-     */
-//    public Long getOwnerId() {
-//        return ownerId;
-//    }
-//
-//    /**
-//     * Set the User of this object
-//     * @param ownerId a User.
-//     */
-//    public void setOwnerId(Long ownerId) {
-//        this.ownerId = ownerId;
-//    }
-
-    /**
      * Get the anime id of this object.
      * @return animeId a String.
      */
@@ -103,19 +87,19 @@ public class Club {
         this.animeId = animeId;
     }
 
-    public List<UserGroup> getUsers() {
+    public List<UserClub> getUsers() {
         return users;
     }
 
-    public void setUsers(List<UserGroup> users) {
+    public void setUsers(List<UserClub> users) {
         this.users = users;
     }
 
-    public void createNewGroup(User user) {
-        UserGroup userGroup = new UserGroup(this, user);
-        userGroup.setUserIsOwner(Boolean.TRUE);
-        users.add(userGroup);
-        user.getGroups().add(userGroup);
+    public void createNewClub(User user) {
+        UserClub userClub = new UserClub(this, user);
+        userClub.setUserIsOwner(Boolean.TRUE);
+        users.add(userClub);
+        user.getClubs().add(userClub);
     }
 
     @Override

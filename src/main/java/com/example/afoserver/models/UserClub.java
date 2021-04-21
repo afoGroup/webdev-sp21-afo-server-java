@@ -5,11 +5,11 @@ import java.util.Objects;
 
 // Join table that shows the groups and their members
 @Entity
-@Table(name = "user_groups")
-public class UserGroup {
+@Table(name = "user_clubs")
+public class UserClub {
 
     @EmbeddedId
-    private UserGroupId id;
+    private UserClubId id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("clubId")
@@ -22,27 +22,27 @@ public class UserGroup {
     @Column(name = "user_is_owner")
     private Boolean userIsOwner = Boolean.FALSE;
 
-    public UserGroup() {}
+    public UserClub() {}
 
-    public UserGroup(Club club, User user) {
+    public UserClub(Club club, User user) {
         this.club = club;
         this.user = user;
-        this.id = new UserGroupId(club.getId(), user.getId());
+        this.id = new UserClubId(club.getId(), user.getId());
     }
 
-    public UserGroupId getId() {
+    public UserClubId getId() {
         return id;
     }
 
-    public void setId(UserGroupId id) {
+    public void setId(UserClubId id) {
         this.id = id;
     }
 
-    public Club getGroup() {
+    public Club getClub() {
         return club;
     }
 
-    public void setGroup(Club club) {
+    public void setClub(Club club) {
         this.club = club;
     }
 
@@ -69,7 +69,7 @@ public class UserGroup {
         if (o == null || getClass() != o.getClass())
             return false;
 
-        UserGroup that = (UserGroup) o;
+        UserClub that = (UserClub) o;
         return Objects.equals(club, that.club) &&
                 Objects.equals(user, that.user);
     }

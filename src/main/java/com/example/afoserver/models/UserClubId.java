@@ -12,21 +12,21 @@ import java.util.Objects;
  */
 
 @Embeddable
-public class UserGroupId implements Serializable {
-    @Column(name="group_id")
-    private Long groupId;
+public class UserClubId implements Serializable {
+    @Column(name="club_id")
+    private Long clubId;
     @Column(name="user_id")
     private Long userId;
 
-    public UserGroupId() {}
+    public UserClubId() {}
 
-    public UserGroupId(Long groupId, Long userId) {
-        this.groupId = groupId;
+    public UserClubId(Long clubId, Long userId) {
+        this.clubId = clubId;
         this.userId = userId;
     }
 
-    public Long getGroupId() {
-        return groupId;
+    public Long getClubId() {
+        return clubId;
     }
 
     public Long getUserId() {
@@ -40,14 +40,14 @@ public class UserGroupId implements Serializable {
         if (o == null || getClass() != o.getClass())
             return false;
 
-        UserGroupId that = (UserGroupId) o;
-        return Objects.equals(groupId, that.groupId) &&
+        UserClubId that = (UserClubId) o;
+        return Objects.equals(clubId, that.clubId) &&
                 Objects.equals(userId, that.userId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(groupId, userId);
+        return Objects.hash(clubId, userId);
     }
 
 }

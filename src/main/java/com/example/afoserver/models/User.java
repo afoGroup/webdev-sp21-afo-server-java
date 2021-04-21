@@ -29,7 +29,7 @@ public class User {
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    private List<UserGroup> clubs = new ArrayList<>();
+    private List<UserClub> clubs = new ArrayList<>();
 
     /**
      * Default constructor for user.
@@ -142,31 +142,31 @@ public class User {
         this.bio = bio;
     }
 
-    public List<UserGroup> getGroups() {
+    public List<UserClub> getClubs() {
         return clubs;
     }
 
-    public void setGroups(List<UserGroup> groups) {
-        this.clubs = groups;
+    public void setClubs(List<UserClub> clubs) {
+        this.clubs = clubs;
     }
 
-    public void addGroup(Club club) {
-        UserGroup userGroup = new UserGroup(club, this);
-        clubs.add(userGroup);
-        club.getUsers().add(userGroup);
+    public void addClub(Club club) {
+        UserClub userClub = new UserClub(club, this);
+        clubs.add(userClub);
+        club.getUsers().add(userClub);
     }
 
-    public void removeGroup(Club club) {
-        for (Iterator<UserGroup> iterator = clubs.iterator();
+    public void removeClub(Club club) {
+        for (Iterator<UserClub> iterator = clubs.iterator();
              iterator.hasNext();) {
-            UserGroup userGroup = iterator.next();
+            UserClub userClub = iterator.next();
 
-            if (userGroup.getGroup().equals(club) &&
-                    userGroup.getUser().equals(this)) {
+            if (userClub.getClub().equals(club) &&
+                    userClub.getUser().equals(this)) {
                 iterator.remove();
-                userGroup.getGroup().getUsers().remove(userGroup);
-                userGroup.setGroup(null);
-                userGroup.setUser(null);
+                userClub.getClub().getUsers().remove(userClub);
+                userClub.setClub(null);
+                userClub.setUser(null);
             }
         }
     }
