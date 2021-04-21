@@ -19,14 +19,15 @@ public class ClubController {
     public Club newClub(
             @RequestBody Club club,
             HttpSession session) {
-        User currentUser = new User(3l, "noExtraOnlyBareMin", "password4", "otaku");
+        return club;
+//        User currentUser = new User(3l, "noExtraOnlyBareMin", "password4", "otaku");
 //        User currentUser = (User) session.getAttribute("currentUser");
-        String usertype = currentUser.getUsertype();
-        if (usertype.equals("weeb")) {
-            return null;
-        }
-        club.createNewClub(currentUser);
-        return clubService.createClub(club);
+//        String usertype = currentUser.getUsertype();
+//        if (usertype.equals("weeb")) {
+//            return null;
+//        }
+//        club.createNewClub(currentUser);
+//        return clubService.createClub(club);
     }
 
     @GetMapping("/api/boards")
