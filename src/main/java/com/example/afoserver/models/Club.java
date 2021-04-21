@@ -23,6 +23,7 @@ public class Club {
             orphanRemoval = true
     )
     private List<UserClub> users = new ArrayList<>();
+
     @OneToMany (
             mappedBy = "club",
             cascade = CascadeType.ALL,
@@ -104,6 +105,24 @@ public class Club {
         userClub.setUserIsOwner(Boolean.TRUE);
         users.add(userClub);
         user.getClubs().add(userClub);
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
+    public void addPost(Post post) {
+        posts.add(post);
+        post.setClub(this);
+    }
+
+    public void removePost(Post post) {
+        posts.remove(post);
+        post.setClub(null);
     }
 
     @Override
