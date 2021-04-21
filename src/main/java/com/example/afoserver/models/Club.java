@@ -13,7 +13,6 @@ public class Club {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-
     @Column(columnDefinition = "TEXT")
     private String bio;
     private String animeId;
@@ -24,6 +23,12 @@ public class Club {
             orphanRemoval = true
     )
     private List<UserClub> users = new ArrayList<>();
+    @OneToMany (
+            mappedBy = "club",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<Post> posts = new ArrayList<>();
 
     /**
      * Default constructor for user.
