@@ -35,6 +35,10 @@ public class ClubController {
         return clubService.findAllClubs();
     }
 
+    /**
+     * Finds the group by the id. This can be used to also retrieve the group's posts
+     * @return Club if found
+     */
     @GetMapping("/api/groups/{gid}")
     public Club findClubById(
             @PathVariable("gid") Long clubId) {
