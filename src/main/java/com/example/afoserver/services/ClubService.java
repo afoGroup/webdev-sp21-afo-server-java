@@ -24,5 +24,4 @@ public class ClubService {
         return clubRepository.findById(clubId).get();
     }
 
-
 }
