@@ -40,13 +40,13 @@ public class UserController {
     }
 
     /**
-     * Endpoint to retrieve the logged in user's profile information
+     * Is this needed???!??? Endpoint to retrieve the logged in user's profile information
      * @param session current session
      * @return currentUser info about currentUser
      */
     @PostMapping("/api/profile")
     public User profile(HttpSession session) {
-        User currentUser = (User)session.getAttribute("currentUser");
+        User currentUser = (User) session.getAttribute("currentUser");
         return currentUser;
     }
 
@@ -62,9 +62,32 @@ public class UserController {
         return currentUser;
     }
 
-//    @DeleteMapping("/api/users/{uid}")
-//    public deleteUser(
-//            @PathVariable()
-//    )
+    /**
+     * For updating the User information, you need to pass all the user's info
+     * @return 0 if successful 1 if not
+     */
+    @PutMapping("/api/users")
+    public int updateUser(
+            @RequestBody User user,
+            HttpSession session) {
+        Long userId = user.getId();
+        session.setAttribute("currentUser", user);
+        return userService.updateUser(userId, user);
+    }
 
+    /**
+     * Deletes user and logs user out
+     * @param session current HTTPSession that has the currentUser info
+     * @return 0 if successful 1 if not
+     */
+    @DeleteMapping("/api/users")
+    public int deleteUser(HttpSession session) {
+        User currentUser = (User) session.getAttribute("currentUser");
+        Long userId = currentUser.getId();
+        int status = userService.deleteUser(userId);
+        if (status == 0) {
+            session.invalidate();
+        }
+        return status;
+    }
 }
