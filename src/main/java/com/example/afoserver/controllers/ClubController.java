@@ -35,6 +35,33 @@ public class ClubController {
         return clubService.findAllClubs();
     }
 
+    @GetMapping("/api/groups/{gid}")
+    public Club findClubById(
+            @PathVariable("gid") Long clubId) {
+        return clubService.findClubById(clubId);
+    }
+
+    /**
+     * For updating the group (club) information, you need to pass all the group's info
+     * @return 0 if successful 1 if not
+     */
+    @PutMapping("/api/groups/{gid}")
+    public int updateClub(
+             @RequestBody Club club) {
+        return clubService.updateClub(club);
+    }
+
+    /**
+     * Deletes user and logs user out (This might need to updated to delete club from user object and userclub)
+     * @param clubId the id of the group (club)
+     * @return 0 if successful 1 if not
+     */
+    @DeleteMapping("/api/groups/{gid}")
+    public int deleteClub(
+            @PathVariable("gid") Long clubId) {
+        return clubService.deleteClub(clubId);
+    }
+
 
 
 }

@@ -29,17 +29,20 @@ public class UserService {
         return userRepository.findUserByCredentials(username, password);
     }
 
+//    Do I need to set all? Or if the Request body includes all the info about the user can I just pass and save?
     public int updateUser(Long userId, User newUser) {
        User originalUser = userRepository.findById(userId).get();
 
        try {
-            originalUser.setPassword(newUser.getPassword());
-            originalUser.setUsertype(newUser.getUsertype());
-            originalUser.setEmail(newUser.getEmail());
-            originalUser.setTwitter(newUser.getTwitter());
-            originalUser.setInstagram(newUser.getInstagram());
-            originalUser.setPictureURL(newUser.getPictureURL());
-            originalUser.setBio(newUser.getBio());
+           originalUser.setPassword(newUser.getPassword());
+           originalUser.setUsertype(newUser.getUsertype());
+           originalUser.setEmail(newUser.getEmail());
+           originalUser.setTwitter(newUser.getTwitter());
+           originalUser.setInstagram(newUser.getInstagram());
+           originalUser.setPictureURL(newUser.getPictureURL());
+           originalUser.setBio(newUser.getBio());
+
+           userRepository.save(originalUser);
            return 0;
        }
        catch (Exception e) {

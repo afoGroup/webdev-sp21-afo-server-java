@@ -24,4 +24,25 @@ public class ClubService {
         return clubRepository.findById(clubId).get();
     }
 
+    //    Do I need to set all (see updateUser)? Or if the Request body includes all the info can I just pass and save?
+    public int updateClub(Club newClub) {
+        try {
+            clubRepository.save(newClub);
+            return 0;
+        }
+        catch (Exception e) {
+            return 1;
+        }
+    }
+
+    public int deleteClub(Long clubId) {
+        try {
+            clubRepository.deleteById(clubId);
+            return 0;
+        }
+        catch (Exception e) {
+            return 1;
+        }
+    }
+
 }
