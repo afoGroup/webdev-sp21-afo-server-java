@@ -48,7 +48,7 @@ public class PostController {
     }
 
     /**
-     * Deletes user and logs user out (This might need to updated to delete club from user object and userclub)
+     * Deletes post
      * @param postId the id of the post
      * @return 0 if successful 1 if not
      */
@@ -57,5 +57,5 @@ public class PostController {
            @PathVariable("pid") Long postId) {
         return postService.deletePost(postId);
    }
-   
+
 }
