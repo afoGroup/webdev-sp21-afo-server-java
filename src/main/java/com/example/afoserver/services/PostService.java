@@ -24,4 +24,14 @@ public class PostService {
         return postRepository.findById(postId).get();
     }
 
+    public int deletePost(Long postId) {
+        try {
+            postRepository.deleteById(postId);
+            return 0;
+        }
+        catch (Exception e) {
+            return 1;
+        }
+    }
+
 }

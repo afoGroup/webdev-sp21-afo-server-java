@@ -29,7 +29,7 @@ public class PostController {
         return postService.createPost(post);
     }
 
-    //    TODO: Need to write accompanying query in PostInterface
+    //    TODO: Do i, no groups api by id returns posts too? Need to write accompanying query in PostInterface
 //    @GetMapping("/api/groups/{gid}/posts")
 //    public Post findPostsForClubs(
 //            @PathVariable("gid") Long clubId) {
@@ -43,9 +43,19 @@ public class PostController {
 
     @GetMapping("/api/posts/{pid}")
     public Post findPostById(
-            @PathVariable("pid") Long pid) {
-        return postService.findPostById(pid);
+            @PathVariable("pid") Long postId) {
+        return postService.findPostById(postId);
     }
 
-
+    /**
+     * Deletes user and logs user out (This might need to updated to delete club from user object and userclub)
+     * @param postId the id of the post
+     * @return 0 if successful 1 if not
+     */
+   @DeleteMapping("/api/posts/{pid}")
+   public int deletePost(
+           @PathVariable("pid") Long postId) {
+        return postService.deletePost(postId);
+   }
+   
 }

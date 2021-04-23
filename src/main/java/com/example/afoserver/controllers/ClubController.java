@@ -51,7 +51,8 @@ public class ClubController {
      */
     @PutMapping("/api/groups/{gid}")
     public int updateClub(
-             @RequestBody Club club) {
+            @PathVariable("gid") Long clubId,
+            @RequestBody Club club) {
         return clubService.updateClub(club);
     }
 
@@ -65,7 +66,5 @@ public class ClubController {
             @PathVariable("gid") Long clubId) {
         return clubService.deleteClub(clubId);
     }
-
-
 
 }
