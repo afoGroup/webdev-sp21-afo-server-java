@@ -66,19 +66,7 @@ public class UserController {
     @PostMapping("/api/login")
     public User login(HttpSession session, @RequestBody User user) {
         User currentUser = userService.findUserByCredentials(user.getUsername(), user.getPassword());
-        if(session ==null){
-            System.out.println("No session available");
-        }else{
-            System.out.println("This is old session");
-        }
         session.setAttribute("currentUser", currentUser);
-        User testUser = (User)session.getAttribute("currentUser");
-        if (testUser == null) {
-            System.out.println("No USER exists in login");
-        }
-        else {
-            System.out.println(testUser.toString());
-        }
         return currentUser;
     }
 
