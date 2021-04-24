@@ -63,10 +63,11 @@ public class ClubController {
      */
     @DeleteMapping("/api/groups/{gid}")
     public int deleteClub(
-            @PathVariable("gid") Long clubId) {
+            @PathVariable("gid") Long clubId,
+            HttpSession session) {
+        Club club = clubService.findClubById(clubId);
+        User currentUser = (User) session.getAttribute("currentUser");
+        currentUser.removeClub(club);
         return clubService.deleteClub(clubId);
     }
-
-
-
 }
