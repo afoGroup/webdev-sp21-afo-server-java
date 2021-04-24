@@ -46,11 +46,19 @@ public class UserController {
      */
     @PostMapping("/api/profile")
     public User profile(HttpSession session) {
-        User currentUser = (User)session.getAttribute("currentUser");
+        if(session ==null) {
+            System.out.println("No session available PROFILE");
+        }
+        String currentUser = (String)session.getAttribute("currentUser");
         if (currentUser == null) {
             System.out.println("No USER exists");
+            System.out.println(currentUser);
         }
-        return currentUser;
+        else {
+            System.out.println(currentUser);
+        }
+        return null;
+//        return currentUser;
     }
 
     @PostMapping("/api/logout")
