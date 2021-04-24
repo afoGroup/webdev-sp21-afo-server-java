@@ -52,11 +52,8 @@ public class UserController {
         String currentUser = (String)session.getAttribute("currentUser");
         if (currentUser == null) {
             System.out.println("No USER exists");
-            System.out.println(currentUser);
         }
-        else {
-            System.out.println(currentUser);
-        }
+        System.out.println(currentUser);
         return null;
 //        return currentUser;
     }
